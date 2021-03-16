@@ -34,6 +34,13 @@
         "description": "OS to use. Ubuntu 20.04/18.04/16.04 or Debian 9."
       }
     },
+    "storageName": {
+      "type": "string",
+      "defaultValue": "[concat(uniqueString(resourceGroup().id), 'vpnsa')]",
+      "metadata": {
+        "description": "Storage bucket name to use. This has been auto-filled, don't change it."
+      }
+    },
     "VMSize": {
       "type": "string",
       "defaultValue": "Standard_B1ls",
@@ -58,7 +65,6 @@
     "subnetName": "VPNSubnet",
     "subnetPrefix": "10.0.1.0/24",
     "apiVersion": "2015-06-15",
-    "storageName": "[concat(uniqueString(resourceGroup().id), 'vpnsa')]",
     "vhdStorageType": "Standard_LRS",
     "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
     "SubnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
@@ -86,7 +92,7 @@
       "sku": "9",
       "version": "latest"
     },
-    "installScriptURL": "https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/azure/install.sh",
+    "installScriptURL": "https://raw.githubusercontent.com/shaunakg/setup-ipsec-vpn/master/azure/install.sh",
     "installCommand": "[concat('sh install.sh ', variables('quote'), parameters('preSharedKey'), variables('quote'), ' ', variables('quote'), parameters('username'), variables('quote'), ' ', variables('quote'), parameters('password'), variables('quote'))]"
   },
   "resources": [
