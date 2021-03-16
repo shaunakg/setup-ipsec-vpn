@@ -36,9 +36,10 @@
     },
     "storageName": {
       "type": "string",
-      "defaultValue": "[concat(uniqueString(resourceGroup().id), 'vpnsa')]",
+      "defaultValue": "",
+      "minLength": 15,
       "metadata": {
-        "description": "Storage bucket name to use. This has been auto-filled, don't change it."
+        "description": "Change to something unique, you don't have to remember this so just keysmash lmfao."
       }
     },
     "VMSize": {
